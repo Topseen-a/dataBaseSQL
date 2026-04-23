@@ -1,0 +1,22 @@
+USE lagosRideAnalytics;
+
+INSERT INTO Drivers VALUES (1, 'John Doe', 4.5, 120);
+INSERT INTO Drivers VALUES (2, 'Jane Smith', 4.2, 90);
+INSERT INTO Drivers VALUES (3, 'James Bond', 4.7, 150);
+INSERT INTO Drivers VALUES (4, 'Samantha James', 4.3, 80);
+INSERT INTO Drivers VALUES (5, 'Michael Brown', 4.0, 60);
+INSERT INTO Drivers VALUES (6, 'Nina Williams', 4.6, 200);
+INSERT INTO Drivers VALUES (7, 'Chris Johnson', 4.1, 110);
+INSERT INTO Drivers VALUES (8, 'Sarah Davis', 4.8, 100);
+INSERT INTO Drivers VALUES (9, 'David Lee', 3.9, 70);
+INSERT INTO Drivers VALUES (10, 'Emma Green', 4.4, 130);
+INSERT INTO Drivers VALUES (11, 'Olumide Adebayo', 4.7, 150);
+INSERT INTO Drivers VALUES (12, 'Grace Okafor', 4.3, 140);
+INSERT INTO Drivers VALUES (13, 'Julius Adedeji', 4.6, 175);
+INSERT INTO Drivers VALUES (14, 'Tolu Olowolagba', 4.2, 105);
+INSERT INTO Drivers VALUES (15, 'Fola Akinwunmi', 4.5, 125);
+INSERT INTO Drivers VALUES (16, 'Oluwaseun Bello', 4.1, 115);
+INSERT INTO Drivers VALUES (17, 'Kayode Ogunleye', 4.8, 180);
+INSERT INTO Drivers VALUES (18, 'Chinonso Ifeanyi', 3.8, 85);
+INSERT INTO Drivers VALUES (19, 'Oluwafunmilayo Bello', 4.3, 140);
+INSERT INTO Drivers VALUES (20, 'Adeola Akin', 4.6, 160);

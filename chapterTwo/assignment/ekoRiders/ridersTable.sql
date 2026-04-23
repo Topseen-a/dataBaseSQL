@@ -1,0 +1,27 @@
+USE lagosRideAnalytics;
+
+INSERT INTO Riders VALUES (1, 'Alice Johnson', 'Lekki');
+INSERT INTO Riders VALUES (2, 'Victor Martins', 'Ikeja');
+INSERT INTO Riders VALUES (3, 'Funke Bello', 'Victoria Island');
+INSERT INTO Riders VALUES (4, 'Tunde Adeyemi', 'Surulere');
+INSERT INTO Riders VALUES (5, 'Grace Olamide', 'Yaba');
+INSERT INTO Riders VALUES (6, 'Kingsley Obi', 'Lekki');
+INSERT INTO Riders VALUES (7, 'Folasade Okoro', 'Ikeja');
+INSERT INTO Riders VALUES (8, 'Emeka Okafor', 'Victoria Island');
+INSERT INTO Riders VALUES (9, 'Temilade Adedeji', 'Lekki');
+INSERT INTO Riders VALUES (10, 'Rita Durojaiye', 'Surulere');
+INSERT INTO Riders VALUES (11, 'Chuka Nwosu', 'Yaba');
+INSERT INTO Riders VALUES (12, 'Ayotunde Adeleke', 'Ikeja');
+INSERT INTO Riders VALUES (13, 'Lola Abiola', 'Lekki');
+INSERT INTO Riders VALUES (14, 'Olumide Bakare', 'Surulere');
+INSERT INTO Riders VALUES (15, 'Chidera Okonkwo', 'Victoria Island');
+INSERT INTO Riders VALUES (16, 'Wale Oni', 'Yaba');
+INSERT INTO Riders VALUES (17, 'Olivia Adebayo', 'Lekki');
+INSERT INTO Riders VALUES (18, 'Temidayo Alabi', 'Ikeja');
+INSERT INTO Riders VALUES (19, 'Micheal Ojo', 'Victoria Island');
+INSERT INTO Riders VALUES (20, 'Tolu Ayinde', 'Surulere');
+INSERT INTO Riders VALUES (21, 'Grace Williams', 'Lekki');
+INSERT INTO Riders VALUES (22, 'Olumide Ayodele', 'Ikeja');
+INSERT INTO Riders VALUES (23, 'James Osundare', 'Yaba');
+INSERT INTO Riders VALUES (24, 'Chika Okafor', 'Surulere');
+INSERT INTO Riders VALUES (25, 'Sandra Ogunleye', 'Victoria Island');

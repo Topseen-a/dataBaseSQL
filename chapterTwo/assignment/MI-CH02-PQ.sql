@@ -28,9 +28,9 @@ FROM SHIPMENT
 WHERE DAY(DepartureDate) = 10;
 
 -- G
-SELECT ShipmentID, ShipperName, ShipperInvoiceNumber, ArrivalDate
-FROM SHIPMENT
-WHERE DAY(DepartureDate) = 10;
+SELECT MAX(InsuredValue) AS MaximumInsuredValue,
+		MIN(InsuredValue) AS MinimumInsuredValue
+FROM SHIPMENT;
 
 -- H
 SELECT AVG(InsuredValue) AS AvgValue
