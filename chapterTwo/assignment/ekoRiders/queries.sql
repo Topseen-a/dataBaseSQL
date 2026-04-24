@@ -1,46 +1,35 @@
 USE lagosRideAnalytics;
 
 -- 1. Top 5 highest-rated drivers in Lagos
-SELECT d.DriverID, d.Name, d.Rating
-FROM Drivers d
-JOIN Rides r ON d.DriverID = r.DriverID
-JOIN Riders ri ON r.RiderID = ri.RiderID
-WHERE ri.City = 'Lagos'
-GROUP BY d.DriverID, d.Name, d.Rating
-ORDER BY d.Rating DESC
+SELECT DriverID, Name, Rating
+FROM Drivers
+ORDER BY Rating DESC
 LIMIT 5;
 
 -- 2. Riders with more than 5 rides in the last 30 days in Lagos
-SELECT ri.RiderID, ri.Name, COUNT(r.RideID) AS TotalRides
-FROM Riders ri
-JOIN Rides r ON ri.RiderID = r.RiderID
-WHERE ri.City = 'Lagos'
-GROUP BY ri.RiderID, ri.Name
-HAVING COUNT(r.RideID) > 5;
+SELECT r.RiderID, r.Name, COUNT(rd.RideID) AS TotalRides
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+GROUP BY r.RiderID, r.Name
+HAVING COUNT(rd.RideID) > 5;
 
 -- 3. Total revenue for the past month for Lagos rides
-SELECT SUM(p.Amount) AS TotalRevenue
-FROM Payments p
-JOIN Rides r ON p.RideID = r.RideID
-JOIN Riders ri ON r.RiderID = ri.RiderID
-WHERE ri.City = 'Lagos';
+SELECT SUM(Amount) AS TotalRevenue
+FROM Payments;
 
 -- 4. Area in Lagos with the most rides
-SELECT ri.City AS Area, COUNT(r.RideID) AS TotalRides
-FROM Riders ri
-JOIN Rides r ON ri.RiderID = r.RiderID
-GROUP BY ri.City
+SELECT r.City AS Area, COUNT(rd.RideID) AS TotalRides
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+GROUP BY r.City
 ORDER BY TotalRides DESC
 LIMIT 1;
 
--- 5. Driver with the highest revenue in Lagos
-SELECT d.DriverID, d.Name,
-       SUM(p.Amount) AS TotalRevenue
+-- -- 5. Driver with the highest revenue in Lagos
+SELECT d.DriverID, d.Name, SUM(p.Amount) AS TotalRevenue
 FROM Drivers d
 JOIN Rides r ON d.DriverID = r.DriverID
 JOIN Payments p ON r.RideID = p.RideID
-JOIN Riders ri ON r.RiderID = ri.RiderID
-WHERE ri.City = 'Lagos'
 GROUP BY d.DriverID, d.Name
 ORDER BY TotalRevenue DESC
 LIMIT 1;
@@ -51,23 +40,19 @@ SELECT RideID, Fare,
 FROM Rides
 WHERE Fare > 1.5 * (SELECT AVG(Fare) FROM Rides)
    OR Fare < 0.5 * (SELECT AVG(Fare) FROM Rides);
-   
--- 7. Find riders in Lagos who rated their drivers less than 3 on average
-SELECT ri.RiderID, ri.Name,
-       AVG(r.Rating) AS AverageRating
-FROM Riders ri
-JOIN Rides r ON ri.RiderID = r.RiderID
-WHERE ri.City = 'Lagos'
-GROUP BY ri.RiderID, ri.Name
-HAVING AVG(r.Rating) < 3;
 
+-- 7. Find riders in Lagos who rated their drivers less than 3 on average
+SELECT r.RiderID, r.Name, AVG(rd.Rating) AS AverageRating
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+GROUP BY r.RiderID, r.Name
+HAVING AVG(rd.Rating) < 3;
 
 -- 8. Find the top 5 Lagos neighborhoods with the highest average fare
-SELECT ri.City AS Area,
-       AVG(r.Fare) AS AverageFare
-FROM Riders ri
-JOIN Rides r ON ri.RiderID = r.RiderID
-GROUP BY ri.City
+SELECT r.City AS Area, AVG(rd.Fare) AS AverageFare
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+GROUP BY r.City
 ORDER BY AverageFare DESC
 LIMIT 5;
 
@@ -78,38 +63,27 @@ LEFT JOIN Rides r ON d.DriverID = r.DriverID
 WHERE r.RideID IS NULL;
 
 -- 10. Rides in Lagos with the longest distance (top 5)
-SELECT r.RideID,
-       r.DistanceKM,
-       r.DriverID,
-       r.RiderID
-FROM Rides r
-ORDER BY r.DistanceKM DESC
+SELECT RideID, DistanceKM, DriverID, RiderID
+FROM Rides
+ORDER BY DistanceKM DESC
 LIMIT 5;
 
 -- 11. Find the number of rides each driver in Lagos has had, sorted by the most rides
-SELECT d.DriverID,
-       d.Name,
-       COUNT(r.RideID) AS TotalRides
-FROM Drivers d
-LEFT JOIN Rides r ON d.DriverID = r.DriverID
-GROUP BY d.DriverID, d.Name
+SELECT DriverID, COUNT(*) AS TotalRides
+FROM Rides
+GROUP BY DriverID
 ORDER BY TotalRides DESC;
 
 -- 12. Identify the payment methods used by Lagos riders for rides over ₦50,000
-SELECT PaymentMethod,
-       COUNT(*) AS NumberOfTransactions
+SELECT PaymentMethod, COUNT(*) AS NumberOfTransactions
 FROM Payments
 WHERE Amount > 50000
 GROUP BY PaymentMethod;
 
 -- 13. Find rides in Lagos with a duration longer than 2 hours
-SELECT r.RideID,
-       r.DriverID,
-       r.RiderID,
-       r.DistanceKM,
-       r.Duration
-FROM Rides r
-WHERE r.Duration > 120;
+SELECT RideID, Duration, DriverID
+FROM Rides
+WHERE Duration > 120;
 
 
 
